@@ -1,7 +1,7 @@
 export type Project = {
   slug: string
   title: string
-  track: 'freelance' | 'engineering' | 'research'
+  track: 'freelance' | 'engineering' | 'research' | 'branding'
   tags: string[]
   shortDesc: string
   creativeDesc?: string   // UX/design angle shown in creative mode
@@ -15,6 +15,7 @@ export type Project = {
   highlights: string[]
   link?: string
   mockup?: string
+  preview?: string        // slug for custom interactive preview component
   slides?: string[]       // ordered slide images for research cards
   stat?: string           // headline figure for research cards (fallback when no slides)
   statLabel?: string
@@ -28,13 +29,14 @@ export const projects: Project[] = [
     track: 'freelance',
     tags: ['Next.js', 'Sanity CMS', 'Stripe', 'Animations'],
     shortDesc: 'Full band website with merch store, EPK, and scroll animations.',
-    gradient: 'linear-gradient(135deg, #9BB898 0%, #6B9668 100%)',
+    gradient: 'linear-gradient(135deg, #F2F2F2 0%, #FFFFFF 100%)',
+    mockup: '/intension-laptop.png',
     span: 2,
     role: 'Designer & Developer',
     year: '2025',
     fullDesc:
       'A full-featured website for Intension, a local Atlanta band. Built to handle everything a working band needs online: EPK for booking, merch store with Stripe checkout, tour dates, and a content-managed CMS via Sanity. Scroll-triggered animations and a dark cinematic aesthetic match the band\'s energy.',
-    mockup: '/intension-mockup.png',
+    preview: 'intension',
     highlights: [
       'Merch store with Stripe checkout and Shippo shipping label automation',
       'Scroll-triggered animations using Intersection Observer API',
@@ -45,17 +47,29 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'placeholder-brand',
-    title: 'Brand Identity',
-    track: 'freelance',
-    tags: ['Figma', 'Branding', 'Typography'],
-    shortDesc: 'Placeholder — brand identity project coming soon.',
-    gradient: 'linear-gradient(135deg, #F5D0A9 0%, #E8A87C 100%)',
+    slug: 'ace-wellness',
+    title: 'Ace Wellness',
+    track: 'branding',
+    tags: ['Figma', 'Logo Design', 'Brand Identity', 'Web Design'],
+    shortDesc: 'Logo design and website mockups for a wellness brand — three distinct visual directions.',
+    gradient: 'linear-gradient(135deg, #E8E8E8 0%, #EFEFEF 100%)',
     span: 1,
     role: 'Designer',
     year: '2025',
-    fullDesc: 'Placeholder.',
-    highlights: [],
+    mockup: '/ace-wellness-1.png',
+    slides: [
+      '/ace-wellness-s1.png',
+      '/ace-wellness-s2.png',
+      '/ace-wellness-brand.png',
+    ],
+    fullDesc:
+      'Designed the visual identity for Ace Wellness, a wellness and skincare brand. Developed three logo concepts — a minimal icon mark, a gold foil wordmark, and a combined logotype — then applied each across website mockups to demonstrate brand flexibility across digital touchpoints.',
+    highlights: [
+      'Three logo directions: icon mark, wordmark, and combined logotype',
+      'Gold foil print mockups for premium brand feel',
+      'Website mockups showing two distinct visual directions (light/warm and dark/gold)',
+      'Designed in Figma from concept to final presentation',
+    ],
   },
   {
     slug: 'placeholder-app',
@@ -79,7 +93,8 @@ export const projects: Project[] = [
     tags: ['React', 'Supabase', 'Python', 'Django', 'Azure'],
     shortDesc: 'Two clinical research platforms, designed and built solo from scratch.',
     creativeDesc: 'Designed the full UX for two clinical platforms — research intake flows, data dashboards, and IRB-compliant UI patterns built for clinical staff.',
-    gradient: 'linear-gradient(135deg, #B8C4D4 0%, #8298B4 100%)',
+    gradient: 'linear-gradient(135deg, #BEBEBE 0%, #E8E8E8 100%)',
+    mockup: '/harvard-mockup.png',
     span: 2,
     role: 'UX Designer & Full Stack Developer',
     creativeRole: 'UX Designer',
@@ -130,6 +145,7 @@ export const projects: Project[] = [
     role: 'Frontend Development Intern',
     creativeRole: 'UX Designer',
     year: '2023',
+    mockup: '/pawtucket-mockup.png',
     fullDesc:
       'Independently redesigned the City of Pawtucket\'s public website, transforming Adobe XD concepts into a live WordPress site using Elementor, CSS, and HTML. Worked directly with the Mayor and city departments to refine content and ensure the site met civic objectives and improved accessibility. Optimized navigation using data-driven insights, introducing intuitive hot buttons based on user behavior analysis.',
     highlights: [
@@ -140,19 +156,39 @@ export const projects: Project[] = [
     ],
   },
 
-  // ── Research ─────────────────────────────────────────────────────────────────
+  // ── Presentations ────────────────────────────────────────────────────────────
+  {
+    slug: 'aurenza',
+    title: 'Aurenza Pharmaceuticals',
+    track: 'research',
+    tags: ['Figma', 'Pitch Deck', 'Presentation Design', 'Brand'],
+    shortDesc: 'Investor pitch deck for a compliance-first pharmaceutical manufacturing startup seeking $5M.',
+    gradient: 'linear-gradient(135deg, #E8E8E8 0%, #EFEFEF 100%)',
+    span: 1,
+    role: 'Designer',
+    year: '2025',
+    mockup: '/aurenza-mockup.png',
+    fullDesc:
+      'Designed a full investor pitch deck for Aurenza Pharmaceuticals, a startup building a compliance-first platform for high-demand therapeutics and nutraceuticals. The deck covers mission and vision, market opportunity, team, manufacturing approach, financial projections, and a $5M funding ask.',
+    highlights: [
+      'Full pitch deck from brief to final design in Figma',
+      'Purple-forward brand identity aligned to Aurenza\'s visual system',
+      'Slides covering team, market, financials, manufacturing approach, and funding',
+      '$5M seed raise target with projected milestones',
+    ],
+  },
   {
     slug: 'nlp-scam-detection',
     title: 'NLP Scam Detection',
     track: 'research',
     tags: ['Python', 'NLP', 'BERT', 'TensorFlow', 'FastAPI', 'Next.js'],
     shortDesc: 'Cross-domain scam detection across four ML models — live interactive demo.',
-    gradient: 'linear-gradient(135deg, #EDE87A 0%, #C8C440 100%)',
+    gradient: 'linear-gradient(135deg, #0D0D0D 0%, #1C1C1C 100%)',
+    textLight: true,
+    mockup: '/nlp-front.png',
     span: 1,
     role: 'ML Engineer',
     year: '2025',
-    stat: '99.75%',
-    statLabel: 'BERT F1 Score',
     link: 'https://frontend-nu-lyart-80.vercel.app',
     fullDesc:
       'A cross-domain NLP research platform comparing four scam detection models — Logistic Regression, SVM, Feed-Forward Neural Network, and fine-tuned BERT — trained on email and call transcript datasets. Built and deployed as a live interactive tool where you can paste any message and get real-time predictions from all models simultaneously, with per-model confidence scores and feature attribution.',
@@ -171,14 +207,11 @@ export const projects: Project[] = [
     track: 'research',
     tags: ['React', 'Express', 'MongoDB', 'Socket.io', 'TF-IDF'],
     shortDesc: 'Full-stack Q&A platform with content recommendations and real-time moderation.',
-    gradient: 'linear-gradient(135deg, #C8D8F0 0%, #8AAAD8 100%)',
+    gradient: 'linear-gradient(135deg, #E8E8E8 0%, #EFEFEF 100%)',
     span: 1,
     role: 'Full Stack Developer',
     year: 'Sep – Dec 2025',
-    stat: '5',
-    statLabel: 'Core Systems Built',
-    mockup: '/huskyflow.png',
-    slides: ['/huskyflow.png', '/huskyflow-slide2.png', '/huskyflow-slide3.png'],
+    mockup: '/huskyflow-mockup.png',
     fullDesc:
       'HuskyFlow is a full-stack Q&A platform built for CS4530. It features a React frontend and Express/MongoDB backend, a content recommendation system using TF-IDF vectorization, in-browser code execution via the Judge0 API, an automated moderation queue with Socket.io real-time updates, and an admin analytics dashboard.',
     highlights: [
@@ -195,13 +228,11 @@ export const projects: Project[] = [
     track: 'research',
     tags: ['Neuroscience', 'Research', 'Psychophysics', 'Data Analysis'],
     shortDesc: 'Controlled experiment on environmental illumination and flicker perception.',
-    gradient: 'linear-gradient(135deg, #E8E8D8 0%, #C8C8A8 100%)',
+    gradient: 'linear-gradient(135deg, #E8E8E8 0%, #EFEFEF 100%)',
     span: 1,
     role: 'Researcher',
     year: 'Jan – Apr 2024',
-    stat: 'Log',
-    statLabel: 'CFF ↑ with Illumination',
-    slides: ['/cff.png'],
+    mockup: '/cff-mockup.png',
     fullDesc:
       'Conducted a controlled experiment to analyze the relationship between environmental illumination and critical flicker fusion frequency (CFF) — the threshold at which a flickering light appears continuous. The study revealed a logarithmic increase in CFF with higher light levels and identified perceptual and physiological factors that influence individual CFF thresholds.',
     highlights: [

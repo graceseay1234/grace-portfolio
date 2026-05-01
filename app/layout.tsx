@@ -1,17 +1,10 @@
 import type { Metadata, Viewport } from 'next'
-import { Caveat } from 'next/font/google'
 import './globals.css'
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
 }
-
-const caveat = Caveat({
-  subsets: ['latin'],
-  weight: '600',
-  variable: '--font-caveat',
-})
 
 export const metadata: Metadata = {
   title: 'Grace Seay — Developer & Designer',
@@ -20,9 +13,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={caveat.variable}>
+    <html lang="en">
       <head>
-        <link rel="stylesheet" href="https://use.typekit.net/ltw5qfn.css" />
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" />
       </head>
       <body>{children}</body>
     </html>
